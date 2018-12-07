@@ -98,7 +98,7 @@ func buildCmd(cmd string, gogc int) (*measurement, error) {
 		realTime: time.Since(start).Seconds(),
 		userTime: c.ProcessState.UserTime().Seconds(),
 		sysTime:  c.ProcessState.SystemTime().Seconds(),
-		maxRss:   c.ProcessState.SysUsage().(*syscall.Rusage).Maxrss,
+		maxRss:   int64(c.ProcessState.SysUsage().(*syscall.Rusage).Maxrss),
 	}, nil
 }
 
